@@ -19,11 +19,11 @@ spec:
           httpGet:
             path: /_ah/health
             port: 8081
-            scheme: HTTPS
+            scheme: HTTP
         readinessProbe:
           httpGet:
             path: /_ah/health
-            scheme: HTTPS
+            scheme: HTTP
             port: 8081           
         ports:
         - containerPort: 50051
@@ -31,4 +31,4 @@ spec:
         - containerPort: 8081
           protocol: TCP                  
         command: ["/grpc_server"]
-        args: ["--grpcport", ":50051", "--httpport", ":8081"]
+        args: ["--grpcport", ":50051", "--httpport", ":8081", "--insecure"]
